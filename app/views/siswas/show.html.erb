@@ -1,0 +1,89 @@
+<div class="row">
+	<div class="col-md-12">
+        <% if flash[:notice].present? %>
+            <%= flash[:notice] %>
+        <% end %>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Detail Data Siswa</h2>
+            </div>
+
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>No. Pendaftaran</th>
+                        <td>:</td>
+                        <td>
+                            <%= @siswa.no_un %>
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <th>NISN</th>
+                        <td>:</td>
+                        <td>
+                            <%= @siswa.nisn %>
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <th>Nama</th>
+                        <td>:</td>
+                        <td>
+                            <%= @siswa.nama %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Jenis Kelamin</th>
+                        <td>:</td>
+                        <td>
+                            <%= @siswa.jenis_kelamin %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Tempat Lahir</th>
+                        <td>:</td>
+                        <td>
+                            <%= @siswa.tempat_lahir %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Tanggal Lahir</th>
+                        <td>:</td>
+                        <td>
+                            <%= I18n.l(@siswa.tanggal_lahir) %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Sekolah Asal</th>
+                        <td>:</td>
+                        <td>
+                            <%= @siswa.sekolah_asal %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Nama Orangtua</th>
+                        <td>:</td>
+                        <td>
+                            <%= @siswa.nama_ortu %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>No. HP</th>
+                        <td>:</td>
+                        <td>
+                            <%= @siswa.no_hp %>
+                        </td>
+                    </tr>
+                </table>
+
+                <p>
+                    <%= link_to "Cetak", siswa_path(@siswa, format: 'pdf'), class: 'btn btn-primary' %> | 
+                    <%= link_to "Edit", edit_siswa_path(@siswa), class: 'btn btn-primary' %> | 
+                    <%= link_to 'Kembali', siswas_path, class: 'btn btn-primary' %>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

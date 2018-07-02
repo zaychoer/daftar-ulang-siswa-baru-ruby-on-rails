@@ -1,0 +1,13 @@
+<%= bootstrap_form_for(@siswa, label_errors: true, inline_errors: true, layout: :horizontal) do |form| %>
+	<%= form.text_field :no_un, placeholder: "No. Pendaftaran", label: "No. Pendaftaran" %>
+	<%= form.text_field :nisn, placeholder: "Nomor Induk Siswa Nasional", label: "NISN" %>
+	<%= form.text_field :nama, placeholder: "Nama Lengkap Siswa", label: "Nama Siswa" %>
+	<%= form.select :jenis_kelamin, [['Perempuan', 0], ['Laki-laki', 1]], prompt: "Pilih Jenis Kelamin", label: "Jenis Kelamin" %>
+	<%= form.text_field :tempat_lahir, placeholder: "Tempat Lahir", label: "Tempat Lahir" %>
+	<%= form.date_select :tanggal_lahir, :start_year => 2000, :order => [:day, :month, :year], include_blank: true %>
+	<%= form.text_field :sekolah_asal, placeholder: "Sekolah Asal", label: "Sekolah Asal" %>
+	<%= form.text_field :nama_ortu, placeholder: "Nama Orangtua", label: "Nama Orangtua" %>
+	<%= form.text_field :no_hp, placeholder: "Nomor HP", label: "Nomor HP" %>
+	<%= form.submit 'Simpan', class: 'btn btn-primary' %> | 
+	<%= link_to 'Kembali', siswas_path, class: 'btn btn-primary' %>
+<% end %>
