@@ -12,8 +12,8 @@ class Siswa < ApplicationRecord
 	def self.import(file)
 		CSV.foreach(file.path, headers: true) do |row|
 			siswa_hash = row.to_hash
-			siswa = find_or_create_by!(nama: siswa_hash['nama'], nisn: siswa_hash['nisn'])
-			siswa.update_attributes(siswa_hash)
+			siswa = find_or_create_by!(nama: siswa_hash['nama'], nisn: siswa_hash['nisn'], no_un: siswa_hash['no_un'])
+			# siswa.update_attributes(siswa_hash)
 		end
 	end
 end

@@ -29,7 +29,7 @@ class SiswasController < ApplicationController
 	end
 
 	def create
-		@siswa = Siswa.new(resource_params, jenis_kelamin)
+		@siswa = Siswa.new(resource_params)
 		@siswa.save
 		flash[:notice] = 'Data Siswa baru berhasil ditambahkan'
 		redirect_to siswas_path
@@ -42,6 +42,7 @@ class SiswasController < ApplicationController
 
 	def update
 		@siswa = Siswa.find(params[:id])
+		@siswa.update(resource_params)
 		flash[:notice] = 'Data siswa baru berhasil diperbaharui'
 		redirect_to siswa_path(@siswa)
 	end

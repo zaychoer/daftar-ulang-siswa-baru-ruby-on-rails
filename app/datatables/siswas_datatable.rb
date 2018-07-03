@@ -10,7 +10,7 @@ class SiswasDatatable < ApplicationDatatable
 				column << siswa.nama
 				column << siswa.jenis_kelamin
 				column << siswa.tempat_lahir
-				column << I18n.l(siswa.tanggal_lahir)
+				column << siswa.tanggal_lahir
 
 				links = []
 				links << link_to('Detail', siswa, class: 'btn btn-success btn-sm')
