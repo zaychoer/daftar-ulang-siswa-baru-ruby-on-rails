@@ -29,7 +29,7 @@ class SiswasController < ApplicationController
 	end
 
 	def create
-		@siswa = Siswa.new(resource_params)
+		@siswa = Siswa.new(resource_params, jenis_kelamin)
 		@siswa.save
 		flash[:notice] = 'Data Siswa baru berhasil ditambahkan'
 		redirect_to siswas_path
@@ -42,7 +42,6 @@ class SiswasController < ApplicationController
 
 	def update
 		@siswa = Siswa.find(params[:id])
-		@siswa.update(resource_params)
 		flash[:notice] = 'Data siswa baru berhasil diperbaharui'
 		redirect_to siswa_path(@siswa)
 	end
@@ -60,9 +59,14 @@ class SiswasController < ApplicationController
 		redirect_to root_url, notice: "Siswa berhasil diimport"
 	end
 
+
 	private
 
 	def resource_params
 		params.require(:siswa).permit(:nama, :jenis_kelamin, :nisn, :tempat_lahir, :tanggal_lahir, :sekolah_asal, :no_un, :nama_ortu, :no_hp)
+	end
+
+	def jenis_kelamin
+		params[:jenis_kelamin].to_i
 	end
 end

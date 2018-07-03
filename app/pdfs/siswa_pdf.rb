@@ -12,7 +12,7 @@ class SiswaPdf < Prawn::Document
 
 	def header
 		image "#{Rails.root}/app/assets/images/LOGO_PROVINSI_BANTEN.png", :width => 70, :height => 70, :position => 10, :vposition => 18
-		move_up(50)
+		move_up(45)
 		font "Times-Roman"
 		text "PEMERINTAH PROVINSI BANTEN", :size => 15, :align => :center
 		text "DINAS PENDIDIKAN DAN KEBUDAYAAN", :size => 15, :style => :bold, :align => :center
@@ -61,7 +61,7 @@ class SiswaPdf < Prawn::Document
 				]
 
 		table(data, :column_widths => [135, 135, 135, 135], :position => 25, :cell_style => {:border_width => 0})
-		move_down 10
+		move_down 5
 		font("Courier", :size => 8)
 		text "#{Time.now.strftime("%d %B %Y at %I:%M %p")}", :align => :right
 		move_down 20
@@ -76,7 +76,7 @@ class SiswaPdf < Prawn::Document
 
 	def header_copy
 		image "#{Rails.root}/app/assets/images/LOGO_PROVINSI_BANTEN.png", :width => 70, :height => 70, :position => 10, :vposition => 475
-		move_up(50)
+		move_up(45)
 		font "Times-Roman"
 		text "PEMERINTAH PROVINSI BANTEN", :size => 15, :align => :center
 		text "DINAS PENDIDIKAN DAN KEBUDAYAAN", :size => 15, :style => :bold, :align => :center
@@ -124,7 +124,7 @@ class SiswaPdf < Prawn::Document
 				]
 
 		table(data, :column_widths => [135, 135, 135, 135], :position => 25, :cell_style => {:border_width => 0})
-		move_down 10
+		move_down 5
 		font("Courier", :size => 8)
 		text "#{Time.now.strftime("%d %B %Y at %I:%M %p")}", :align => :right
 	end

@@ -27,18 +27,19 @@
 
                     </tbody>
                 <% end %>
+                <hr>
                 <% if user_signed_in? %>
                     <%= form_tag import_siswas_path, multipart: true, class: 'form-inline' do %>
 
                       <div class="form-group">
-                        <%= link_to "Export CSV", siswas_path(format: "csv"), class: 'btn btn-primary' %>
+                        <%= link_to "Export Data Siswa ke CSV", siswas_path(format: "csv"), class: 'btn btn-primary' %>
                       </div>
                       <div class="form-group">
                         <%= file_field_tag :file, class: '' %>
                       </div>
                       
                       <div class="form-group">
-                        <%= submit_tag "Import CSV", class: 'btn btn-info' %>
+                        <%= submit_tag "Import Data Siswa", class: 'btn btn-info' %>
                       </div>
 
                       <div class="form-group">

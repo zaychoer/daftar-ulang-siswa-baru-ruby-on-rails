@@ -1,5 +1,5 @@
 class Siswa < ApplicationRecord
-	enum jenis_kelamin: {P: 0, L: 1}
+	# enum jenis_kelamin: {P: 0, L: 1}
 	def self.to_csv(fields = column_names, options = {})
 		CSV.generate(options) do |csv|
 			csv << fields
