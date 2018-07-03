@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2018_06_26_091915) do
 
   create_table "siswas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nama"
-    t.integer "jenis_kelamin"
+    t.string "jenis_kelamin"
     t.string "nisn"
     t.string "tempat_lahir"
     t.date "tanggal_lahir"

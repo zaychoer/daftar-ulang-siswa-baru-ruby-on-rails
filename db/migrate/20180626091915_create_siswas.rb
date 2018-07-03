@@ -2,7 +2,7 @@ class CreateSiswas < ActiveRecord::Migration[5.2]
   def change
     create_table :siswas do |t|
       t.string :nama
-      t.integer :jenis_kelamin
+      t.string :jenis_kelamin
       t.string :nisn, length: 10
       t.string :tempat_lahir
       t.date :tanggal_lahir

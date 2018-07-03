@@ -31,7 +31,7 @@ class SiswasController < ApplicationController
 	def create
 		@siswa = Siswa.new(resource_params)
 		@siswa.save
-		flash[:notice] = 'Data Siswa baru berhasil ditambahkan'
+		flash[:notice] = 'Data Siswa baru atas nama ' +@siswa.nama+ ' berhasil ditambahkan'
 		redirect_to siswas_path
 	end
 
@@ -43,21 +43,21 @@ class SiswasController < ApplicationController
 	def update
 		@siswa = Siswa.find(params[:id])
 		@siswa.update(resource_params)
-		flash[:notice] = 'Data siswa baru berhasil diperbaharui'
+		flash[:notice] = 'Data siswa baru atas nama ' +@siswa.nama+ ' berhasil diperbaharui'
 		redirect_to siswa_path(@siswa)
 	end
 
 	def destroy
 		@siswa = Siswa.find(params[:id])
 		@siswa.destroy
-		flash[:notice] = 'Data siswa baru berhasil dihapus'
+		flash[:notice] = 'Data siswa baru atas nama ' +@siswa.nama+ ' berhasil dihapus'
 		redirect_to siswas_path()
 	end
 
 
 	def import
 		Siswa.import(params[:file])
-		redirect_to root_url, notice: "Siswa berhasil diimport"
+		redirect_to root_url, notice: 'Siswa berhasil diimport'
 	end
 
 
@@ -67,7 +67,4 @@ class SiswasController < ApplicationController
 		params.require(:siswa).permit(:nama, :jenis_kelamin, :nisn, :tempat_lahir, :tanggal_lahir, :sekolah_asal, :no_un, :nama_ortu, :no_hp)
 	end
 
-	def jenis_kelamin
-		params[:jenis_kelamin].to_i
-	end
 end
