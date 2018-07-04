@@ -4,8 +4,36 @@
             <div class="panel-heading">
                 <h2 class="panel-title">Data Siswa</h2>
             </div>
-
             <div class="panel-body">
+                <% if user_signed_in? %>
+                <div class="alert alert-info">
+                    <p align="right"><b>Jumlah Siswa Daftar Ulang : <%= @siswas.count %> siswa</b></p>
+                </div>
+                <hr>
+                <div class="alert alert-success">
+                    <b>Jumlah siswa yang telah daftar ulang : </b>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Laki-laki</th>
+                                <th> : </th>
+                                <th><%= Siswa.total_laki %> siswa</th>
+                            </tr>
+                            <tr>
+                                <th>Perempuan &nbsp;</th>
+                                <th> : &nbsp;</th>
+                                <th><%= Siswa.total_perempuan %> siswa</th>
+                            </tr>
+                            <tr>
+                                <th>Jumlah</th>
+                                <th> : </th>
+                                <th><%= Siswa.total_jenisKelamin %> siswa</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <hr>
+                <% end %>
                 <%= content_tag :table, role: :datatable, data: { url: siswas_path(format: :json)} do %>
                     <thead>
                         <tr>

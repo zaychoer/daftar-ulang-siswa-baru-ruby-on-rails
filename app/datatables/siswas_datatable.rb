@@ -15,7 +15,7 @@ class SiswasDatatable < ApplicationDatatable
 				links = []
 				links << link_to('Detail', siswa, class: 'btn btn-success btn-sm')
 				links << link_to('Edit', edit_siswa_path(siswa), class: 'btn btn-warning btn-sm')
-				links << link_to('Hapus', siswa, class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Apakah anda yakin ingin menghapus data siswa tersebut' })
+				# links << link_to('Hapus', siswa, class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Apakah anda yakin ingin menghapus data siswa tersebut' })
 				column << links.join(' | ')
 			end
 		end

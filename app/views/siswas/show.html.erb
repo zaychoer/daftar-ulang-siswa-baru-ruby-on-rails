@@ -75,7 +75,7 @@
                 </table>
 
                 <p>
-                    <%= link_to "Cetak", siswa_path(@siswa, format: 'pdf'), class: 'btn btn-primary' %> | 
+                    <%= link_to "Cetak", siswa_path(@siswa, format: 'pdf'), class: 'btn btn-primary', target: :_blank %> | 
                     <%= link_to "Edit", edit_siswa_path(@siswa), class: 'btn btn-primary' %> | 
                     <%= link_to 'Kembali', siswas_path, class: 'btn btn-primary' %>
                 </p>
