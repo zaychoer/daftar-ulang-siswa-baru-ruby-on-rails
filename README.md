@@ -1,4 +1,4 @@
-#Aplikasi Daftar Ulang Siswa Baru
+# Aplikasi Daftar Ulang Siswa Baru
 
 Akhirnya selesai juga membuat aplikasi pertama saya menggunakan framework RoR (Rub on Rails).
 
@@ -7,7 +7,7 @@ Terima kasih saya ucapkan kepada Mas Agung Setiawan selaku pemilik [IDRails.com]
 Meskipun masih banyak bug dalam aplikasi yang buat hehehe...
 Jika ada yang ingin mengembangkan aplikasi ini lebih lanjut sok silahkan aja.
 
-###Tahap Instalasi
+### Tahap Instalasi
 
 Oke langsung aja cara instalasi aplikasi ini :
 
@@ -38,7 +38,7 @@ rake db:seed
 * Selamat anda telah berhasil menjalankan Aplikasi Daftar Ulang Siswa Baru
 * Silahkan lakukan customisasi sesuai keinginan anda. *Happy Coding*
 
-###Fitur
+### Fitur
 * CRUD
 * Export dan Import File CSV
 * Export ke PDF
@@ -52,7 +52,7 @@ rake db:seed
 
 Jika ada pertanyaan silahkan email ke [zaycho_89@yahoo.com] 
 
-##Referensi
+## Referensi
 * [IDRails.com](http://www.idrails.com/)
 * [Stackoverflow](https://stackoverflow.com/)
 * [Drifting Ruby: Ruby on Rails Screencasts for Web Developers](https://www.driftingruby.com/)
