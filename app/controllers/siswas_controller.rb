@@ -11,11 +11,12 @@ class SiswasController < ApplicationController
 	end
 
 	def show
+		@user = current_user
 		@siswa = Siswa.find(params[:id])
 		respond_to do |format|
 			format.html
 			format.pdf do
-				pdf = SiswaPdf.new(@siswa)
+				pdf = SiswaPdf.new(@siswa, @user)
 				send_data pdf.render,
 							filename: "#{@siswa.nama}",
           					type: 'application/pdf',

@@ -1,6 +1,7 @@
 class SiswaPdf < Prawn::Document
-	def initialize(siswa)
+	def initialize(siswa, user)
 		super(margin: 15, top_margin: 2, page_size: [612, 936])
+		@user = user
 		@siswa = siswa
 		header
 		data_siswa
@@ -42,7 +43,7 @@ class SiswaPdf < Prawn::Document
 					["NISN", ":", "#{@siswa.nisn}"],
 					["Nama Siswa", ":", "#{@siswa.nama}"],
 					["Jenis Kelamin", ":", "#{@siswa.jenis_kelamin}"],
-					["Tempat, Tanggal Lahir", ":","#{@siswa.tempat_lahir}, #{@siswa.tanggal_lahir.strftime("%d %B %Y")}"],
+					["Tempat, Tanggal Lahir", ":","#{@siswa.tempat_lahir}, #{I18n.l(@siswa.tanggal_lahir)}"],
 					["Sekolah Asal", ":", "#{@siswa.sekolah_asal}"],
 					["Nama Orangtua/Wali", ":" ,"#{@siswa.nama_ortu}"],
 					["Nomor HP", ":", "#{@siswa.no_hp}"]
@@ -57,15 +58,17 @@ class SiswaPdf < Prawn::Document
 				 ["", "","" ,""],
 				 ["", "","", ""],
 				 ["", "","", ""],
-				 ["", "", "#{@siswa.nama}".truncate(23, separator: /\s/), "#{@siswa.nama_ortu}".truncate(23, separator: /\s/)]
+				 ["#{@user.name}".truncate(23, separator: /\s/), "", "#{@siswa.nama}".truncate(23, separator: /\s/), "#{@siswa.nama_ortu}".truncate(23, separator: /\s/)]
 				]
 
 		table(data, :column_widths => [135, 135, 135, 135], :position => 25, :cell_style => {:border_width => 0})
 		move_down 5
 		text "* Bukti Daftar Ulang harap disimpan dengan baik <b>JANGAN SAMPAI HILANG</b>", :inline_format => true
-		text "* Digunakan sebagai kartu MPLS (Masa Pengenalan Lingkungan Sekolah) pada tanggal 16, 17 dan 18 Juli 2018"
+		text "* Digunakan sebagai <b>kartu MPLS (Masa Pengenalan Lingkungan Sekolah) pada tanggal 16, 17 dan 18 Juli 2018</b>", :inline_format => true
+		text "* Kegiatan MPLS menggunakan <b>seragam putih abu-abu, membawa alat tulis serta datang tepat waktu pukul 06.15 WIB</b>", :inline_format => true
+		move_down(2)
 		font("Courier", :size => 8)
-		text "#{Time.now.strftime("%d %B %Y at %I:%M %p")}", :align => :right
+		text "#{I18n.l(Time.now)}", :align => :right
 		move_down 10
 		stroke_horizontal_line(0, bounds.width)
 		move_down 10
@@ -78,7 +81,7 @@ class SiswaPdf < Prawn::Document
 
 	def header_copy
 		move_up 30
-		image "#{Rails.root}/app/assets/images/LOGO_PROVINSI_BANTEN.png", :width => 70, :height => 70, :position => 10, :vposition => 490
+		image "#{Rails.root}/app/assets/images/LOGO_PROVINSI_BANTEN.png", :width => 70, :height => 70, :position => 10, :vposition => 500
 		move_up(30)
 		font "Times-Roman"
 		text "PEMERINTAH PROVINSI BANTEN", :size => 15, :align => :center
@@ -131,6 +134,6 @@ class SiswaPdf < Prawn::Document
 		text "* Bukti Daftar Ulang harap disimpan dengan baik <b>JANGAN SAMPAI HILANG</b>", :inline_format => true
 		text "* Digunakan sebagai kartu MPLS (Masa Pengenalan Lingkungan Sekolah) pada tanggal 16, 17 dan 18 Juli 2018"
 		font("Courier", :size => 8)
-		text "#{Time.now.strftime("%d %B %Y at %I:%M %p")}", :align => :right
+		text "#{I18n.l(Time.now)}", :align => :right
 	end
 end
