@@ -12,16 +12,20 @@ class SiswasController < ApplicationController
 
 	def show
 		@user = current_user
-		@siswa = Siswa.find(params[:id])
-		respond_to do |format|
-			format.html
-			format.pdf do
-				pdf = SiswaPdf.new(@siswa, @user)
-				send_data pdf.render,
-							filename: "#{@siswa.nama}",
-          					type: 'application/pdf',
-          					disposition: 'inline'
+
+		if @siswa = Siswa.find(params[:id])
+			respond_to do |format|
+				format.html
+				format.pdf do
+					pdf = SiswaPdf.new(@siswa, @user)
+					send_data pdf.render,
+								filename: "#{@siswa.nama}",
+	          					type: 'application/pdf',
+	          					disposition: 'inline'
+				end
 			end
+		else
+			redirect_to root_path()
 		end
 	end
 

@@ -3,6 +3,7 @@ class SiswaPdf < Prawn::Document
 		super(margin: 15, top_margin: 2, page_size: [612, 936])
 		@user = user
 		@siswa = siswa
+		@tanggal = DateTime.now.strftime("%d %B %Y").to_date
 		header
 		data_siswa
 		footer
@@ -53,19 +54,19 @@ class SiswaPdf < Prawn::Document
 	end
 
 	def footer
-		data = [ ["", "","" ,"Tangerang, #{Time.now.strftime("%d %B %Y")}"],
+		data = [ ["", "","" ,"Tangerang, #{I18n.l(@tanggal)}"],
 				 ["Panitia 1", "Panitia 2", "Siswa", "Orangtua/Wali"],
 				 ["", "","" ,""],
 				 ["", "","", ""],
 				 ["", "","", ""],
-				 ["#{@user.name}".truncate(23, separator: /\s/), "", "#{@siswa.nama}".truncate(23, separator: /\s/), "#{@siswa.nama_ortu}".truncate(23, separator: /\s/)]
+				 ["#{@user.name}".truncate(23, separator: /\s/), "#{@user.panitia_2}".truncate(23, separator: /\s/), "#{@siswa.nama}".truncate(23, separator: /\s/), "#{@siswa.nama_ortu}".truncate(23, separator: /\s/)]
 				]
 
 		table(data, :column_widths => [135, 135, 135, 135], :position => 25, :cell_style => {:border_width => 0})
 		move_down 5
 		text "* Bukti Daftar Ulang harap disimpan dengan baik <b>JANGAN SAMPAI HILANG</b>", :inline_format => true
 		text "* Digunakan sebagai <b>kartu MPLS (Masa Pengenalan Lingkungan Sekolah) pada tanggal 16, 17 dan 18 Juli 2018</b>", :inline_format => true
-		text "* Kegiatan MPLS menggunakan <b>seragam putih abu-abu, membawa alat tulis serta datang tepat waktu pukul 06.15 WIB</b>", :inline_format => true
+		text "* Kegiatan MPLS menggunakan <b>seragam putih abu-abu, membawa alat tulis serta datang tepat waktu, pukul 06.15 WIB</b>", :inline_format => true
 		move_down(2)
 		font("Courier", :size => 8)
 		text "#{I18n.l(Time.now)}", :align => :right
@@ -121,12 +122,12 @@ class SiswaPdf < Prawn::Document
 	end
 
 	def footer_copy
-		data = [ ["", "","" ,"Tangerang, #{Time.now.strftime("%d %B %Y")}"],
+		data = [ ["", "","" ,"Tangerang, #{I18n.l(@tanggal)}"],
 				 ["Panitia 1", "Panitia 2", "Siswa", "Orangtua/Wali"],
 				 ["", "","" ,""],
 				 ["", "","", ""],
 				 ["", "","", ""],
-				 ["", "", "#{@siswa.nama}".truncate(23, separator: /\s/), "#{@siswa.nama_ortu}".truncate(23, separator: /\s/)]
+				 ["#{@user.name}".truncate(23, separator: /\s/), "#{@user.panitia_2}".truncate(23, separator: /\s/), "#{@siswa.nama}".truncate(23, separator: /\s/), "#{@siswa.nama_ortu}".truncate(23, separator: /\s/)]
 				]
 
 		table(data, :column_widths => [135, 135, 135, 135], :position => 25, :cell_style => {:border_width => 0})
