@@ -31,6 +31,10 @@ rake db:create
 rake db:migrate
 ```
 * Kemudian import database user yang ada dalam projek ini.
+```
+Email : admin@admin.com
+Password : rahasia
+```
 * Setelah itu lakukan rake db:seed untuk mengenerate dummy data siswa
 ```
 rake db:seed
