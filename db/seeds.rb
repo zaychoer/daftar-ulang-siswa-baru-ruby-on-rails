@@ -12,6 +12,3 @@ Siswa.create(nama: 'Fulan bin Fulan', jenis_kelamin: 'L', nisn: '0033228876', te
 Siswa.create(nama: 'Fulan bin Fulan', jenis_kelamin: 'L', nisn: '0033228878', tempat_lahir: 'Tangerang', tanggal_lahir: '2000-05-03', sekolah_asal: 'SMP Negeri Tangerang', no_un: '21730021092232', nama_ortu: 'Solihin', no_hp: '123456789011')
 Siswa.create(nama: 'Fulan bin Fulan', jenis_kelamin: 'P', nisn: '0033228879', tempat_lahir: 'Tangerang', tanggal_lahir: '2000-03-16', sekolah_asal: 'SMP Negeri Tangerang', no_un: '21730021150258', nama_ortu: 'Solihin', no_hp: '123456789011')
 Siswa.create(nama: 'Fulan bin Fulan', jenis_kelamin: 'P', nisn: '0033228870', tempat_lahir: 'Tangerang', tanggal_lahir: '2002-09-13', sekolah_asal: 'SMP Negeri Tangerang', no_un: '21730021091423', nama_ortu: 'Solihin', no_hp: '123456789011')
-
-
-# User.create(email: 'admin@admin.com', encrypted_password: 'rahasia', name: 'Admin', panitia_2: 'Admin 2', level: nil)
