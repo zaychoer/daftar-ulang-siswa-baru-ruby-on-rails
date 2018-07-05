@@ -1,4 +1,8 @@
 class Siswa < ApplicationRecord
+
+	validates :no_un, presence: true, length: {maximum: 14}
+
+
 	def self.to_csv(fields = column_names, options = {})
 		CSV.generate(options) do |csv|
 			csv << fields

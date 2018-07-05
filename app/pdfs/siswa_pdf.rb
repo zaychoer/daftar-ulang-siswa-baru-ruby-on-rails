@@ -1,6 +1,6 @@
 class SiswaPdf < Prawn::Document
 	def initialize(siswa)
-		super(margin: 15, page_size: [612, 936])
+		super(margin: 15, top_margin: 2, page_size: [612, 936])
 		@siswa = siswa
 		header
 		data_siswa
@@ -11,7 +11,7 @@ class SiswaPdf < Prawn::Document
 	end
 
 	def header
-		image "#{Rails.root}/app/assets/images/LOGO_PROVINSI_BANTEN.png", :width => 70, :height => 70, :position => 10, :vposition => 18
+		image "#{Rails.root}/app/assets/images/LOGO_PROVINSI_BANTEN.png", :width => 70, :height => 70, :position => 10, :vposition => 28
 		move_up(45)
 		font "Times-Roman"
 		text "PEMERINTAH PROVINSI BANTEN", :size => 15, :align => :center
@@ -57,14 +57,16 @@ class SiswaPdf < Prawn::Document
 				 ["", "","" ,""],
 				 ["", "","", ""],
 				 ["", "","", ""],
-				 ["", "", "#{@siswa.nama}", "#{@siswa.nama_ortu}"]
+				 ["", "", "#{@siswa.nama}".truncate(23, separator: /\s/), "#{@siswa.nama_ortu}".truncate(23, separator: /\s/)]
 				]
 
 		table(data, :column_widths => [135, 135, 135, 135], :position => 25, :cell_style => {:border_width => 0})
 		move_down 5
+		text "* Bukti Daftar Ulang harap disimpan dengan baik <b>JANGAN SAMPAI HILANG</b>", :inline_format => true
+		text "* Digunakan sebagai kartu MPLS (Masa Pengenalan Lingkungan Sekolah) pada tanggal 16, 17 dan 18 Juli 2018"
 		font("Courier", :size => 8)
 		text "#{Time.now.strftime("%d %B %Y at %I:%M %p")}", :align => :right
-		move_down 20
+		move_down 10
 		stroke_horizontal_line(0, bounds.width)
 		move_down 10
 	end
@@ -75,8 +77,9 @@ class SiswaPdf < Prawn::Document
 
 
 	def header_copy
-		image "#{Rails.root}/app/assets/images/LOGO_PROVINSI_BANTEN.png", :width => 70, :height => 70, :position => 10, :vposition => 475
-		move_up(45)
+		move_up 30
+		image "#{Rails.root}/app/assets/images/LOGO_PROVINSI_BANTEN.png", :width => 70, :height => 70, :position => 10, :vposition => 490
+		move_up(30)
 		font "Times-Roman"
 		text "PEMERINTAH PROVINSI BANTEN", :size => 15, :align => :center
 		text "DINAS PENDIDIKAN DAN KEBUDAYAAN", :size => 15, :style => :bold, :align => :center
@@ -94,11 +97,11 @@ class SiswaPdf < Prawn::Document
 	end
 
 	def data_siswa_copy
-		bounding_box([400, 280], :width => 80, :height => 90) do
+		bounding_box([400, 295], :width => 80, :height => 90) do
 			text "Foto 3 x 4", :valign => :center, :align => :center, :size => 8
 			stroke_bounds
 		end
-		move_up(100)
+		move_up 95
 		font("Times-Roman", :size => 10)
 		data = [
 					["No.Pendaftaran", ":", "#{@siswa.no_un}"],
@@ -120,11 +123,13 @@ class SiswaPdf < Prawn::Document
 				 ["", "","" ,""],
 				 ["", "","", ""],
 				 ["", "","", ""],
-				 ["", "", "#{@siswa.nama}", "#{@siswa.nama_ortu}"]
+				 ["", "", "#{@siswa.nama}".truncate(23, separator: /\s/), "#{@siswa.nama_ortu}".truncate(23, separator: /\s/)]
 				]
 
 		table(data, :column_widths => [135, 135, 135, 135], :position => 25, :cell_style => {:border_width => 0})
 		move_down 5
+		text "* Bukti Daftar Ulang harap disimpan dengan baik <b>JANGAN SAMPAI HILANG</b>", :inline_format => true
+		text "* Digunakan sebagai kartu MPLS (Masa Pengenalan Lingkungan Sekolah) pada tanggal 16, 17 dan 18 Juli 2018"
 		font("Courier", :size => 8)
 		text "#{Time.now.strftime("%d %B %Y at %I:%M %p")}", :align => :right
 	end

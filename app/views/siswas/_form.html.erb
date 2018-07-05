@@ -1,3 +1,11 @@
+<% if @siswa.errors.any? %>
+	<div class='alert alert-danger alert-dismissble'>
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<% @siswa.errors.full_messages.each do |error| %>
+			<span><%= error %></span></br>
+		<% end %>
+	</div>
+<% end %>
 <%= bootstrap_form_for(@siswa, label_errors: true, inline_errors: true, layout: :horizontal) do |form| %>
 	<%= form.text_field :no_un, placeholder: "No. Pendaftaran", label: "No. Pendaftaran" %>
 	<%= form.text_field :nisn, placeholder: "Nomor Induk Siswa Nasional", label: "NISN" %>

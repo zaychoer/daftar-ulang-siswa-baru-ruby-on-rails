@@ -42,9 +42,12 @@ class SiswasController < ApplicationController
 
 	def update
 		@siswa = Siswa.find(params[:id])
-		@siswa.update(resource_params)
-		flash[:notice] = 'Data siswa baru atas nama ' +@siswa.nama+ ' berhasil diperbaharui'
-		redirect_to siswa_path(@siswa)
+		if @siswa.update(resource_params)
+			flash[:notice] = 'Data siswa baru atas nama ' +@siswa.nama+ ' berhasil diperbaharui'
+			redirect_to siswa_path(@siswa)
+		else
+			render 'new'
+		end
 	end
 
 	def destroy

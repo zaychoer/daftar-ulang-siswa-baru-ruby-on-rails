@@ -35,6 +35,7 @@ gem 'responders'
 gem 'rails-assets-jquery', source: 'https://rails-assets.org'
 gem 'rails-assets-datatables', source: 'https://rails-assets.org'
 gem 'kaminari'
+gem "pundit"
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
