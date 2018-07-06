@@ -13,15 +13,15 @@ class SiswaPdf < Prawn::Document
 	end
 
 	def header
-		image "#{Rails.root}/app/assets/images/LOGO_PROVINSI_BANTEN.png", :width => 70, :height => 70, :position => 10, :vposition => 28
+		image "#{Rails.root}/app/assets/images/logo.png", :width => 70, :height => 70, :position => 10, :vposition => 28
 		move_up(45)
 		font "Times-Roman"
-		text "PEMERINTAH PROVINSI BANTEN", :size => 15, :align => :center
-		text "DINAS PENDIDIKAN DAN KEBUDAYAAN", :size => 15, :style => :bold, :align => :center
+		text "KOP SEKOLAH", :size => 15, :align => :center
+		text "KOP SEKOLAH", :size => 15, :style => :bold, :align => :center
 		text "UPT SMA NEGERI 3 TANGERANG", :size => 15, :style => :bold, :align => :center
-		text "Jl. KH. Hasyim Ashari, No.6 Karang Tengah, Kota Tangerang, Kode Pos : 15157", :size => 10, :align => :center
-		text "Telp : (021) 7305758, Fax : (021) 73458277, Website: www.sman3tgr.sch.id, Email : sman3tgr@yahoo.com", :size => 10, :align => :center
-		text "NSS/NPSN : 301026401005/20606847 ***", :size => 10, :align => :center
+		text "Alamat Sekolah", :size => 10, :align => :center
+		text "No. Telpon, Fax, email, webiste sekolah", :size => 10, :align => :center
+		text "NSS/NPSN sekolah", :size => 10, :align => :center
 		stroke_horizontal_line(0, bounds.width)
 		move_down(10)
 		font("Times-Roman", :size => 11, :style => :bold) do
@@ -64,9 +64,9 @@ class SiswaPdf < Prawn::Document
 
 		table(data, :column_widths => [135, 135, 135, 135], :position => 25, :cell_style => {:border_width => 0})
 		move_down 5
-		text "* Bukti Daftar Ulang harap disimpan dengan baik <b>JANGAN SAMPAI HILANG</b>", :inline_format => true
-		text "* Digunakan sebagai <b>kartu MPLS (Masa Pengenalan Lingkungan Sekolah) pada tanggal 16, 17 dan 18 Juli 2018</b>", :inline_format => true
-		text "* Kegiatan MPLS menggunakan <b>seragam putih abu-abu, membawa alat tulis serta datang tepat waktu, pukul 06.15 WIB</b>", :inline_format => true
+		text "* Keterangan <b>JANGAN SAMPAI HILANG</b>", :inline_format => true
+		text "* Keterangan", :inline_format => true
+		text "* Keterangan", :inline_format => true
 		move_down(2)
 		font("Courier", :size => 8)
 		text "#{I18n.l(Time.now)}", :align => :right
@@ -82,15 +82,15 @@ class SiswaPdf < Prawn::Document
 
 	def header_copy
 		move_up 30
-		image "#{Rails.root}/app/assets/images/LOGO_PROVINSI_BANTEN.png", :width => 70, :height => 70, :position => 10, :vposition => 500
+		image "#{Rails.root}/app/assets/images/logo.png", :width => 70, :height => 70, :position => 10, :vposition => 500
 		move_up(30)
 		font "Times-Roman"
-		text "PEMERINTAH PROVINSI BANTEN", :size => 15, :align => :center
-		text "DINAS PENDIDIKAN DAN KEBUDAYAAN", :size => 15, :style => :bold, :align => :center
+		text "KOP SEKOLAH", :size => 15, :align => :center
+		text "KOP SEKOLAH", :size => 15, :style => :bold, :align => :center
 		text "UPT SMA NEGERI 3 TANGERANG", :size => 15, :style => :bold, :align => :center
-		text "Jl. KH. Hasyim Ashari, No.6 Karang Tengah, Kota Tangerang, Kode Pos : 15157", :size => 10, :align => :center
-		text "Telp : (021) 7305758, Fax : (021) 73458277, Website: www.sman3tgr.sch.id, Email : sman3tgr@yahoo.com", :size => 10, :align => :center
-		text "NSS/NPSN : 301026401005/20606847 ***", :size => 10, :align => :center
+		text "Alamat Sekolah", :size => 10, :align => :center
+		text "No. Telpon, Fax, email, webiste sekolah", :size => 10, :align => :center
+		text "NSS/NPSN sekolah", :size => 10, :align => :center
 		stroke_horizontal_line(2, bounds.width)
 		move_down(10)
 		font("Times-Roman", :size => 11, :style => :bold) do
@@ -132,8 +132,8 @@ class SiswaPdf < Prawn::Document
 
 		table(data, :column_widths => [135, 135, 135, 135], :position => 25, :cell_style => {:border_width => 0})
 		move_down 5
-		text "* Bukti Daftar Ulang harap disimpan dengan baik <b>JANGAN SAMPAI HILANG</b>", :inline_format => true
-		text "* Digunakan sebagai kartu MPLS (Masa Pengenalan Lingkungan Sekolah) pada tanggal 16, 17 dan 18 Juli 2018"
+		text "* Keterangan <b>JANGAN SAMPAI HILANG</b>", :inline_format => true
+		text "* Keterangan", :inline_format => true
 		font("Courier", :size => 8)
 		text "#{I18n.l(Time.now)}", :align => :right
 	end
