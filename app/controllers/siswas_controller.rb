@@ -35,9 +35,14 @@ class SiswasController < ApplicationController
 
 	def create
 		@siswa = Siswa.new(resource_params)
-		@siswa.save
-		flash[:notice] = 'Data Siswa baru atas nama ' +@siswa.nama+ ' berhasil ditambahkan'
-		redirect_to siswas_path
+		if 
+			@siswa.save
+			flash[:notice] = 'Data Siswa baru atas nama ' +@siswa.nama+ ' berhasil ditambahkan'
+			redirect_to siswa_path(@siswa)
+		else
+			render 'new'
+		end
+
 	end
 
 
@@ -47,7 +52,8 @@ class SiswasController < ApplicationController
 
 	def update
 		@siswa = Siswa.find(params[:id])
-		if @siswa.update(resource_params)
+		if 
+			@siswa.update(resource_params)
 			flash[:notice] = 'Data siswa baru atas nama ' +@siswa.nama+ ' berhasil diperbaharui'
 			redirect_to siswa_path(@siswa)
 		else
