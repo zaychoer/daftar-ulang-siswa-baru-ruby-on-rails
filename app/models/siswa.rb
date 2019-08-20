@@ -29,7 +29,7 @@ class Siswa < ApplicationRecord
 		where(jenis_kelamin: 'P').count
 	end
 
-	def self.total_jenisKelamin
+	def self.total_jenis_kelamin
 		total_laki + total_perempuan
 	end
 
