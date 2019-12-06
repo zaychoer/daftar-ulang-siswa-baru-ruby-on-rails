@@ -151,7 +151,8 @@ GEM
       prawn (>= 0.11.1)
       railties (>= 3.0.0)
     public_suffix (3.1.1)
-    puma (3.12.1)
+    puma (4.3.1)
+      nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.7)
@@ -265,7 +266,7 @@ DEPENDENCIES
   prawn!
   prawn-table
   prawn_rails
-  puma (~> 3.11)
+  puma (~> 4.3)
   pundit
   rails (~> 5.2.0)
   rails-assets-datatables!
